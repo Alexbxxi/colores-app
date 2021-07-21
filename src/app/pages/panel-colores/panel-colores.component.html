@@ -1,0 +1,217 @@
+<div class="container animate__animated animate__fadeIn">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title text-center"><strong>Colores</strong></h4>
+          <h6 class="card-subtitle text-center">Catálogo de colores</h6>
+
+          <div class="row">
+            <div class="col-12">
+              <button
+                type="button"
+                class="btn btn-dark mb-2 b"
+                data-bs-toggle="modal"
+                data-bs-target="#modalAgregarColor"
+              >
+                <span class="material-icons">add</span>
+              </button>
+            </div>
+            <!-- <button (click)="rerender()">PRUEBA</button> -->
+          </div>
+
+          <div class="table-responsive">
+            <table class="table row-border hover">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th class="text-center">Nombre</th>
+                  <th class="text-center">Color</th>
+                  <th class="text-center">Pantone</th>
+                  <th class="text-center">Año</th>
+                  <th class="text-center">Editar</th>
+                  <th class="text-center">Eliminar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-center"></td>
+                  <td class="text-center"></td>
+                  <td class="text-center"></td>
+                  <td class="text-center"></td>
+                  <td class="text-center"></td>
+                  <td class="text-center">
+                    <button
+                      type="button"
+                      class="btn btn-dark mb-2 b"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modalEditarColor"
+                    >
+                      <span class="material-icons"> edit </span>
+                    </button>
+                  </td>
+                  <td class="text-center">
+                    <button
+                      type="button"
+                      class="btn btn-dark mb-2 b"
+                      name="btnBorrar"
+                      id="btnBorrar"
+                    >
+                      <span class="material-icons"> delete </span>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Termina tabla -->
+<!-- Empieza modal -->
+<div
+  class="modal fade"
+  id="modalAgregarColor"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  data-bs-keyboard="false"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar color</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group row">
+            <div class="col-6">
+              <label for="horaInicio">Nombre: </label>
+              <div>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="nombre"
+                  id="nombre"
+                />
+              </div>
+              <!-- <small class="text-danger">Campo requerido</small> -->
+            </div>
+            <div class="col-6">
+              <label for="horaFinal">Color: </label>
+              <div>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="color"
+                  id="color"
+                />
+              </div>
+              <!-- <small class="text-danger">Campo requerido</small> -->
+            </div>
+          </div>
+          <div class="form-group row mt-3">
+            <div class="col-6">
+              <label for="boletos">Pantone: </label>
+              <div>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="pantone"
+                  id="pantone"
+                />
+              </div>
+              <!-- <small class="text-danger">Campo requerido</small> -->
+            </div>
+            <div class="col-6">
+              <label for="horaFinalRecorrido">Año: </label>
+              <div>
+                <input class="form-control" type="text" name="anio" id="anio" />
+              </div>
+              <!-- <small class="text-danger">Campo requerido</small> -->
+            </div>
+          </div>
+          <div class="modal-footer mt-3">
+            <button type="submit" class="btn btn-dark">Guardar</button>
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal editar  -->
+<div
+  class="modal fade"
+  id="modalEditarColor"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  data-bs-keyboard="false"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar color</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group row">
+            <div class="col-6">
+              <label for="horaInicio">Nombre: </label>
+              <div>
+                <input class="form-control" type="text" name="a" id="a|" />
+              </div>
+              <!-- <small class="text-danger">Campo requerido</small> -->
+            </div>
+            <div class="col-6">
+              <label for="horaFinal">Color: </label>
+              <div>
+                <input class="form-control" type="text" name="b" id="b" />
+              </div>
+              <!-- <small class="text-danger">Campo requerido</small> -->
+            </div>
+          </div>
+          <div class="form-group row mt-3">
+            <div class="col-6">
+              <label for="boletos">Pantone: </label>
+              <div>
+                <input class="form-control" type="text" name="c" id="c" />
+              </div>
+              <!-- <small class="text-danger">Campo requerido</small> -->
+            </div>
+            <div class="col-6">
+              <label for="horaFinalRecorrido">Año: </label>
+              <div>
+                <input class="form-control" type="text" name="d" id="d" />
+              </div>
+              <!-- <small class="text-danger">Campo requerido</small> -->
+            </div>
+          </div>
+          <div class="modal-footer mt-3">
+            <button type="submit" class="btn btn-dark">Guardar cambios</button>
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
