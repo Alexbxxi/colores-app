@@ -6,8 +6,9 @@ import { usuarios } from '../interfaces/conf-usuarios.interface';
   providedIn: 'root',
 })
 export class LoginService {
-  urlapi = 'http://127.0.0.1/api/v1/';
+  urlapi = 'http://127.0.0.1/apicolores/public/api/v1/';
   body = {};
+  usuarios: usuarios = {};
 
   // TOKEN no olvidar el Bearer
   header = {
@@ -27,11 +28,12 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   getUsuario(usuario) {
-    var url = this.urlapi + 'login/' + usuario;
+    this.usuarios = usuario;
+    this.body = this.usuarios;
+    var url = this.urlapi + 'login';
     return new Promise((resolve, reject) => {
-      this.http.get(url, this.header).subscribe(
+      this.http.post(url, this.body, this.header).subscribe(
         (data: usuarios) => {
-          // console.log(data);
           resolve(data);
         },
         (err) => {
@@ -40,4 +42,5 @@ export class LoginService {
       );
     });
   }
+
 }
