@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { usuarios } from '../interfaces/conf-usuarios.interface';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  urlapi = 'http://127.0.0.1/apicolores/public/api/v1/';
+  // urlapi = 'http://127.0.0.1/apicolores/public/api/v1/';
+  // urlapi = 'https://auditorias.sf.tabasco.gob.mx/api';
+  urlapi = 'http://10.14.20.89:3050/api';
   body = {};
   usuarios: usuarios = {};
 
@@ -27,20 +30,34 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
 
-  getUsuario(usuario) {
-    this.usuarios = usuario;
-    this.body = this.usuarios;
-    var url = this.urlapi + 'login';
-    return new Promise((resolve, reject) => {
-      this.http.post(url, this.body, this.header).subscribe(
-        (data: usuarios) => {
-          resolve(data);
-        },
-        (err) => {
-          reject(err);
-        }
-      );
-    });
-  }
+  // getUsuario(usuario) {
+  //   this.usuarios = usuario;
+  //   this.body = this.usuarios;
+  //   console.log(this.body);
+  //   var url = this.urlapi + '/login';
+  //   return new Promise((resolve, reject) => {
+  //     this.http.post(url, this.body, this.header).subscribe(
+  //       (data: usuarios) => {
+  //         resolve(data);
+  //         console.log('repuesta', data);
+  //       },
+  //       (err) => {
+  //         reject(err);
+  //       }
+  //     );
+  //   });
+  // }
 
+  getUsuario(usuario) {
+    this.body = usuario;
+    return this.http.post(`${this.urlapi}/login`, this.body).pipe(
+      map((res: any) => {
+        if (res !== undefined || res !== null) {
+          return res;
+        } else {
+          return {};
+        }
+      })
+    );
+  }
 }

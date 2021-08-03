@@ -14,7 +14,12 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   dataLogin: usuarios[] = [];
   data: any;
-  constructor(public loginService: LoginService, private fb: FormBuilder, private router:Router) {
+  loginSubscribe: any;
+  constructor(
+    public loginService: LoginService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     this.crearFormLogin();
   }
 
@@ -24,28 +29,61 @@ export class LoginComponent implements OnInit {
     this.formLogin = this.fb.group({
       // id: [''],
       usuario: ['', [Validators.required]],
-      pass: ['', [Validators.required]],
+      password: ['', [Validators.required]],
     });
     this.formLogin.controls['usuario'].valueChanges.subscribe((data) => {
       console.log(data);
     });
-    this.formLogin.controls['pass'].valueChanges.subscribe((data) => {
+    this.formLogin.controls['password'].valueChanges.subscribe((data) => {
       console.log(data);
     });
   }
 
-  login() {
-    // console.log(this.formLogin.value);
-    this.loginService
+  // login() {
+  // console.log(this.formLogin.value);
+  // this.loginService
+  //   .getUsuario(this.formLogin.value)
+  //   .then((res: any) => {
+  //     this.data = res;
+  //     console.log(this.data);
+  //     if (this.data.error !== true) {
+  //       console.log('DATA ', this.data);
+  //       localStorage.setItem('usuario', JSON.stringify(this.data.data));
+  //       this.router.navigate(['panel-colores']);
+  //     } else {
+  //       Swal.fire({
+  //         icon: 'error',
+  //         title: 'Oops...',
+  //         text: 'Something went wrong!',
+  //         footer: '<a href="">Why do I have this issue?</a>',
+  //       });
+  //     }
+  // console.log(this.dataLogin);
+  //     })
+  //     .catch();
+  // }
+
+  login2() {
+    this.loginSubscribe = this.loginService
       .getUsuario(this.formLogin.value)
-      .then((res: any) => {
+      .subscribe((res: any) => {
         this.data = res;
-        console.log(this.dataLogin);
-        if (this.data.rol == "login") {
-          this.router.navigate(['panel-colores']);
+        console.log('respuestaComponent: ', res);
+        try {
+          if (this.data.error !== true) {
+            localStorage.setItem('usuario', JSON.stringify(this.data.data));
+            this.router.navigate(['panel-colores']);
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Usuario no encontrado',
+            });
+          }
+        } catch (error) {
+          console.log(error);
         }
-        // console.log(this.dataLogin);
-        })
-      .catch();
+        return res;
+      });
   }
 }

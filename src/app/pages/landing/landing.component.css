@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+  padding-top: 0;
+}
+
+/* Header */
+.titleH1 {
+    padding: 20px 0;
+    text-align: center;
+    font-size: 2.9em;
+}

@@ -1,11 +1,11 @@
 
-<div class="container formularioLogin bg">
+<div class="container formLogin bg">
  
   <form
-    class="formBox animate__animated animate__fadeIn"
+    class="formLogin__box  animate__animated animate__fadeIn"
     autocomplete="off"
     [formGroup]="formLogin"
-    (ngSubmit)="login()"
+    (ngSubmit)="login2()"
   >
   <app-header></app-header>
     <span class="material-icons"> account_circle </span>
@@ -33,10 +33,10 @@
         <input
           type="password"
           class="form-control"
-          id="pass"
-          name="pass"
+          id="password"
+          name="password"
           placeholder="Contraseña"
-          formControlName="pass"
+          formControlName="password"
           required
         />
       </div>

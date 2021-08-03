@@ -3,6 +3,7 @@ import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import { ColoresService } from '../../services/colores.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { colores } from 'src/app/interfaces/conf-colores.interface';
 import Swal from 'sweetalert2';
 
@@ -23,7 +24,7 @@ export class PanelColoresComponent implements OnInit {
   dataC = [];
   data: any;
 
-  constructor(private coloresService: ColoresService, private fb: FormBuilder) {
+  constructor(private coloresService: ColoresService, private fb: FormBuilder, private router: Router) {
     this.crearFormColores();
     this.crearFormEdit();
   }
@@ -134,7 +135,8 @@ export class PanelColoresComponent implements OnInit {
     );
   }
 
-  getColorById(color) {
+  getColorById(color: any) {
+    console.log(color);
     this.coloresService
       .getColorById(color)
       .then((res: any) => {
@@ -205,7 +207,7 @@ export class PanelColoresComponent implements OnInit {
     });
   }
 
-  delColor(id) {
+  delColor(id: any) {
     console.log(id);
     Swal.fire({
       title: '¿Estas seguro?',
@@ -248,6 +250,11 @@ export class PanelColoresComponent implements OnInit {
         })
         .catch();
     });
+  }
+
+  logout() {
+    localStorage.removeItem('usuario');
+    this.router.navigate(['login']);
   }
 
   ngOnDestroy(): void {

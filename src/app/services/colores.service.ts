@@ -43,7 +43,7 @@ export class ColoresService {
     });
   }
 
-  getColorById(color) {
+  getColorById(color: any) {
     var url = this.urlapi + 'colores/' + color;
     return new Promise((resolve, reject) => {
       this.http.get(url, this.header).subscribe(
@@ -58,7 +58,7 @@ export class ColoresService {
     });
   }
 
-  saveColor(color) {
+  saveColor(color: any) {
     var url = this.urlapi + 'colores';
     this.colores = color;
     this.body = this.colores;
@@ -74,7 +74,7 @@ export class ColoresService {
     });
   }
 
-  saveEdit(id) {
+  saveEdit(id: any) {
     var url = this.urlapi + 'colores/' + id;
     this.colores = id;
     this.body = this.colores;
@@ -90,7 +90,7 @@ export class ColoresService {
     });
   }
 
-  delColor(id) {
+  delColor(id: number) {
     var url = this.urlapi + 'colores/' + id;
     return new Promise((resolve, reject) => {
       this.http.delete(url, this.header).subscribe(

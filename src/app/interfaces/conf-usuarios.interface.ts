@@ -1,7 +1,7 @@
 export interface usuarios {
     id?: number,
     usuario?: string,
-    pass?: string,
+    password?: string,
     rol?: string,
     estatus?: string
 }

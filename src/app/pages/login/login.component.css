@@ -1,11 +1,11 @@
-.formularioLogin {
+.formLogin {
     padding-top: 5rem;
     display: flex;
     justify-content: center;
     text-align: center;
 }
 
-.formBox {
+.formLogin__box {
     background: white;
     border: 0 none;
     border-radius: 5px;
